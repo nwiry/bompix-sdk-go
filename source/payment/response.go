@@ -16,29 +16,29 @@ type PaymentResponse struct {
 	} `json:"payload"` // Payload contém os detalhes do pagamento.
 }
 
-// PaymentResponseGet representa a resposta de uma consulta individual de pagamento.
+// PaymentResponseUuid representa a resposta de uma consulta individual de pagamento.
 type PaymentResponseUuid struct {
 	Message string `json:"message"` // Message é a mensagem da resposta.
 	Payload struct {
 		UUID       string          `json:"uuid"`        // UUID é o identificador único do pagamento.
-		LinksID    interface{}     `json:"links_id"`    // LinkID é o ID do link associado ao pagamento.
+		LinksID    interface{}     `json:"links_id"`    // LinksID é o ID do link associado ao pagamento.
 		Amount     interface{}     `json:"amount"`      // Amount é o valor do pagamento.
 		Message    *PaymentMessage `json:"message"`     // Message é a mensagem associada ao pagamento.
 		Paid       bool            `json:"paid"`        // Paid indica se o pagamento foi concluído.
 		QrcodePNG  string          `json:"qrcode_png"`  // QrcodePNG é o código QR do pagamento em formato PNG.
-		LastUpdate string          `json:"last_update"` // Type é o tipo de pagamento.
+		LastUpdate string          `json:"last_update"` // LastUpdate é a data e hora da última atualização do pagamento.
 	} `json:"payload"` // Payload contém os detalhes do pagamento.
 }
 
-// PaymentResponse representa a resposta de uma consulta de pagamentos múltiplos.
+// PaymentsResponse representa a resposta de uma consulta de pagamentos múltiplos.
 type PaymentsResponse struct {
 	Message string `json:"message"` // Message é a mensagem da resposta.
 	Payload []struct {
 		UUID     string          `json:"uuid"`     // UUID é o identificador único do pagamento.
-		LinksID  interface{}     `json:"links_id"` // LinkID é o ID do link associado ao pagamento.
+		LinksID  interface{}     `json:"links_id"` // LinksID é o ID do link associado ao pagamento.
 		Amount   interface{}     `json:"amount"`   // Amount é o valor do pagamento.
 		Message  *PaymentMessage `json:"message"`  // Message é a mensagem associada ao pagamento.
 		Paid     bool            `json:"paid"`     // Paid indica se o pagamento foi concluído.
-		DateTime string          `json:"date_time"`
-	} `json:"payload,omitempty"` // Payload contém os detalhes do pagamento.
+		DateTime string          `json:"date_time"` // DateTime é a data e hora do pagamento.
+	} `json:"payload,omitempty"` // Payload contém os detalhes dos pagamentos.
 }

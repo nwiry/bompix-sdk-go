@@ -62,6 +62,7 @@ func GetUuid(env *environment.Environment, uuid string) (paymentResponse *Paymen
 	return
 }
 
+// GetPayments realiza uma solicitação para obter uma lista de pagamentos.
 func GetPayments(env *environment.Environment) (paymentResponse *PaymentsResponse, bperr *bperror.ResponseError, err error) {
 	// Verifica se um token de acesso foi atribuído ao ambiente.
 	err = env.RequireAccessToken()
