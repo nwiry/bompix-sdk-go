@@ -44,8 +44,9 @@ func Logout(env *environment.Environment) (*bperror.ResponseError, error) {
 
 	// Cria uma nova solicitação para a rota de autenticação.
 	r := request.Request{
-		Environment: env,
-		Route:       route,
+		Environment:    env,
+		Route:          route,
+		UseAccessToken: true,
 	}
 
 	// Executa a solicitação de logout.
