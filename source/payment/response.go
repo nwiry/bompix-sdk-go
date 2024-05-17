@@ -5,7 +5,7 @@ type PaymentResponse struct {
 	Message string `json:"message"` // Message é a mensagem da resposta.
 	Payload struct {
 		UUID        string          `json:"uuid"`         // UUID é o identificador único do pagamento.
-		LinkID      interface{}     `json:"link_id"`      // LinkID é o ID do link associado ao pagamento.
+		LinkID      int             `json:"link_id"`      // LinkID é o ID do link associado ao pagamento.
 		Amount      interface{}     `json:"amount"`       // Amount é o valor do pagamento.
 		Message     *PaymentMessage `json:"message"`      // Message é a mensagem associada ao pagamento.
 		Paid        bool            `json:"paid"`         // Paid indica se o pagamento foi concluído.
@@ -21,7 +21,7 @@ type PaymentResponseUuid struct {
 	Message string `json:"message"` // Message é a mensagem da resposta.
 	Payload struct {
 		UUID       string          `json:"uuid"`        // UUID é o identificador único do pagamento.
-		LinksID    interface{}     `json:"links_id"`    // LinksID é o ID do link associado ao pagamento.
+		LinksID    int             `json:"links_id"`    // LinksID é o ID do link associado ao pagamento.
 		Amount     interface{}     `json:"amount"`      // Amount é o valor do pagamento.
 		Message    *PaymentMessage `json:"message"`     // Message é a mensagem associada ao pagamento.
 		Paid       bool            `json:"paid"`        // Paid indica se o pagamento foi concluído.
@@ -34,11 +34,11 @@ type PaymentResponseUuid struct {
 type PaymentsResponse struct {
 	Message string `json:"message"` // Message é a mensagem da resposta.
 	Payload []struct {
-		UUID     string          `json:"uuid"`     // UUID é o identificador único do pagamento.
-		LinksID  interface{}     `json:"links_id"` // LinksID é o ID do link associado ao pagamento.
-		Amount   interface{}     `json:"amount"`   // Amount é o valor do pagamento.
-		Message  *PaymentMessage `json:"message"`  // Message é a mensagem associada ao pagamento.
-		Paid     bool            `json:"paid"`     // Paid indica se o pagamento foi concluído.
+		UUID     string          `json:"uuid"`      // UUID é o identificador único do pagamento.
+		LinksID  int             `json:"links_id"`  // LinksID é o ID do link associado ao pagamento.
+		Amount   interface{}     `json:"amount"`    // Amount é o valor do pagamento.
+		Message  *PaymentMessage `json:"message"`   // Message é a mensagem associada ao pagamento.
+		Paid     bool            `json:"paid"`      // Paid indica se o pagamento foi concluído.
 		DateTime string          `json:"date_time"` // DateTime é a data e hora do pagamento.
 	} `json:"payload,omitempty"` // Payload contém os detalhes dos pagamentos.
 }
