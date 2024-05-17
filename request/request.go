@@ -68,6 +68,8 @@ func (r *Request) DoRequest(method string, response interface{}) (*bperror.Respo
 	} else {
 		// Se a resposta não for bem-sucedida, tenta decodificar um possível JSON de erro
 		var errorResponse bperror.ResponseError
+		errorResponse.Headers = resp.Header
+		errorResponse.StatusCode = resp.StatusCode
 		err = json.NewDecoder(resp.Body).Decode(&errorResponse)
 		if err == nil && errorResponse.Message != "" {
 			return &errorResponse, nil
