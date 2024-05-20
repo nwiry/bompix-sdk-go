@@ -22,7 +22,7 @@ type PaymentResponseUuid struct {
 	Payload struct {
 		UUID       string          `json:"uuid"`        // UUID é o identificador único do pagamento.
 		LinksID    int             `json:"links_id"`    // LinksID é o ID do link associado ao pagamento.
-		Amount     interface{}     `json:"amount"`      // Amount é o valor do pagamento.
+		Amount     float64     `json:"amount"`      // Amount é o valor do pagamento.
 		Message    *PaymentMessage `json:"message"`     // Message é a mensagem associada ao pagamento.
 		Paid       bool            `json:"paid"`        // Paid indica se o pagamento foi concluído.
 		QrcodePNG  string          `json:"qrcode_png"`  // QrcodePNG é o código QR do pagamento em formato PNG.
@@ -36,7 +36,7 @@ type PaymentsResponse struct {
 	Payload []struct {
 		UUID     string          `json:"uuid"`      // UUID é o identificador único do pagamento.
 		LinksID  int             `json:"links_id"`  // LinksID é o ID do link associado ao pagamento.
-		Amount   interface{}     `json:"amount"`    // Amount é o valor do pagamento.
+		Amount   float64     `json:"amount"`    // Amount é o valor do pagamento.
 		Message  *PaymentMessage `json:"message"`   // Message é a mensagem associada ao pagamento.
 		Paid     bool            `json:"paid"`      // Paid indica se o pagamento foi concluído.
 		DateTime string          `json:"date_time"` // DateTime é a data e hora do pagamento.
