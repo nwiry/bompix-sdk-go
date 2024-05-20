@@ -80,6 +80,30 @@ func GetLink(env *environment.Environment, id int) (response *LinkResponse, bper
 	return
 }
 
+// GetLinkSlug realiza uma solicitação para obter um link pelo slug fornecido.
+func GetLinkSlug(env *environment.Environment, slug string) (response *LinkResponse, bperr *bperror.ResponseError, err error) {
+	// Verifica se um token de acesso foi atribuído ao ambiente.
+	err = env.RequireAccessToken()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	// Cria uma nova solicitação para a rota de obter link por id.
+	r := request.Request{
+		Environment:    env,
+		Route:          route + "/" + slug,
+		UseAccessToken: true,
+	}
+
+	// Inicializa a resposta do link.
+	response = &LinkResponse{}
+
+	// Executa a solicitação para obter o link.
+	bperr, err = r.DoRequest(http.MethodGet, response)
+
+	return
+}
+
 // GetLinks realiza uma solicitação para obter uma lista de links.
 func GetLinks(env *environment.Environment) (response *LinksResponse, bperr *bperror.ResponseError, err error) {
 	// Verifica se um token de acesso foi atribuído ao ambiente.
