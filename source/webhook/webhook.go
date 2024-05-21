@@ -13,7 +13,7 @@ import (
 const route string = "/webhook"
 
 // Create envia uma solicitação para criar um novo webhook de eventos usando o ambiente fornecido.
-func Create(env *environment.Environment, webhook WebhookRequest) (response *WebhookResponse, bperr *bperror.ResponseError, err error) {
+func Create(env *environment.Environment, webhook *WebhookRequest) (response *WebhookResponse, bperr *bperror.ResponseError, err error) {
 	// Verifica se um token de acesso foi atribuído ao ambiente.
 	err = env.RequireAccessToken()
 	if err != nil {
@@ -62,7 +62,7 @@ func GetWebhook(env *environment.Environment, id int) (response *WebhooksRespons
 }
 
 // GetWebhooks realiza uma solicitação para obter uma lista de webhooks.
-func GetWebhooks(env *environment.Environment, webhook WebhookRequest) (response *WebhooksResponse, bperr *bperror.ResponseError, err error) {
+func GetWebhooks(env *environment.Environment) (response *WebhooksResponse, bperr *bperror.ResponseError, err error) {
 	// Verifica se um token de acesso foi atribuído ao ambiente.
 	err = env.RequireAccessToken()
 	if err != nil {
@@ -72,7 +72,6 @@ func GetWebhooks(env *environment.Environment, webhook WebhookRequest) (response
 	// Cria uma nova solicitação para a rota de obter webhooks
 	r := request.Request{
 		Environment:    env,
-		Body:           webhook,
 		Route:          route,
 		UseAccessToken: true,
 	}
